@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <h1>Financial Instructor - We help Manage your funds</h1>
+        
+        <form id="userdetails" ng-submit="userDetails()">
+            <h2>University Expenses</h2>
+            <table>
+                <tr>
+                    <td><label>Tution Fees (Overall Program):</label></td>
+                    <td><input type="text" ng-model="university.fees" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Program Duration (Months):</label></td>
+                    <td><input type="text" ng-model="university.duration" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Payments Periods:</label></td>
+                    <td><select ng-model="university.period" ng-options="x for x in period" ng-required="true"></select></td>
+                </tr>
+                <tr>
+                    <td><label>Books Expense (Per Sem):</label></td>
+                    <td><input type="text" ng-model="university.book" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Stationary (Per Sem):</label></td>
+                    <td><input type="text" ng-model="university.stationary" ng-required="true" /></td>
+                </tr>                
+            </table> 
+            <br />
+
+            <h2>Routine Expenses (Monthly)</h2>
+            <table>
+                <tr>
+                    <td><label>House Rent/Installment:</label></td>
+                    <td><input type="text" ng-model="routine.rent" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Automobile Installment:</label></td>
+                    <td><input type="text" ng-model="routine.auto_installment" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Personal Installment:</label></td>
+                    <td><input type="text" ng-model="routine.pers_installment" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Real Estate Taxes:</label></td>
+                    <td><input type="text" ng-model="routine.real_taxes" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Other Taxes:</label></td>
+                    <td><input type="text" ng-model="routine.other_taxes" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Life Insurance Premiums:</label></td>
+                    <td><input type="text" ng-model="routine.life_preminum" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Automobile Insurance Premiums:</label></td>
+                    <td><input type="text" ng-model="routine.auto_preminum" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Food:</label></td>
+                    <td><input type="text" ng-model="routine.food" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Clothing and laundry:</label></td>
+                    <td><input type="text" ng-model="routine.clothing" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Utility Bills:</label></td>
+                    <td><input type="text" ng-model="routine.utility_bills" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Travel:</label></td>
+                    <td><input type="text" ng-model="routine.transportation" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Entertainment:</label></td>
+                    <td><input type="text" ng-model="routine.entertainment" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Club & Hobbies:</label></td>
+                    <td><input type="text" ng-model="routine.club_hobbies" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Professional Services:</label></td>
+                    <td><input type="text" ng-model="routine.services" ng-required="true" /></td>
+                </tr>        
+                <tr>
+                    <td><label>Medical:</label></td>
+                    <td><input type="text" ng-model="routine.medical" ng-required="true" /></td>
+                </tr>     
+            </table>
+
+            <h2>Other Expenses (Yearly)</h2>
+            <table>
+                <tr>
+                    <td><label>House Furniture:</label></td>
+                    <td><input type="text" ng-model="other.furniture" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Electronics:</label></td>
+                    <td><input type="text" ng-model="other.electronics" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Vacation:</label></td>
+                    <td><input type="text" ng-model="other.vacation" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Repairs:</label></td>
+                    <td><input type="text" ng-model="other.repairs" ng-required="true" /></td>
+                </tr>                
+            </table>
+
+            <h2>Source of Income</h2>
+            <table>
+                <tr>
+                    <td><label>Federal Grant:</label></td>
+                    <td><input type="text" ng-model="income.federal" ng-required="true" /></td>
+                    <td><label>Years:</label></td>
+                    <td><input type="text" ng-model="income.federal_years" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Scholarships:</label></td>
+                    <td><input type="text" ng-model="income.scholarship" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Employment:</label></td>
+                    <td><input type="text" ng-model="income.employment" ng-required="true" /></td>
+                    <td><label>Hours per Month:</label></td>
+                    <td><input type="text" ng-model="income.employment_hours" ng-required="true" /></td>
+                </tr>
+                <tr>
+                    <td><label>Family Fund:</label></td>
+                    <td><input type="text" ng-model="income.family_fund" ng-required="true" /></td>
+                </tr>
+            </table>
+            <br /><br />
+            <input type="submit" id="submit" value="Submit">
+
+        </form>
+    </div>
+
+</body>
+</html>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', ['$scope', '$http', '$window', function ($scope, $http, $window) {
+        $scope.period = ["3 Months", "6 Months", "12 Months"];
+        $scope.userDetails = function () {
+
+            var temp_data =  {
+                    "university": $scope.university,
+                    "routine": $scope.routine,
+                    "other": $scope.other,
+                    "income": $scope.income
+            }
+
+            $http({
+                url: 'http://localhost:8081/api/expenses',
+                method: 'POST',
+                data: temp_data,                
+                headers: { 'Content-Type': 'application/json' }
+            }).then(function (httpResponse) {                
+                console.log('response:', httpResponse);
+                $window.open('http://127.0.0.1:3000/income.html', '_blank');
+            })
+        }
+    }]);
+</script>

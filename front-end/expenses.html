@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+</head>
+
+<body>
+
+    <div ng-app="myApp1" ng-controller="myCtrl1">
+        <h1>Financial Instructor - We help Manage your funds</h1>
+        <button ng-click="getDetails()" >
+            Generate Expense Chart
+        </button>
+        
+        <button ng-click="getDetails()">
+            Generate Income Chart
+        </button>
+
+
+        <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options"></canvas>         
+
+    </div>
+
+</body>
+</html>
+
+<script>
+    var app = angular.module('myApp1', ['chart.js']);
+
+    app.controller('myCtrl1', ['$scope', '$http', function ($scope, $http) {
+
+        $scope.getDetails = function () {
+
+            $scope.labels = [];
+            $scope.data = [];
+
+
+            $http({
+                url: 'http://localhost:8081/api/charts',
+                method: 'GET'                
+            }).then(function (httpResponse) {
+
+                var data_temp = httpResponse.data.data[0];
+
+                    angular.forEach(data_temp, function (value, key) {
+                        
+                        var bool = true;
+                        var duration = 0;
+
+                        if (key == 'university_fees') {
+
+                            var temp = value;
+
+                            angular.forEach(data_temp, function (value1, key1) {
+                                    
+                                if (key1 == 'university_duration') {
+                                    duration = value1;
+                                    temp = temp / value1;                                   
+                                }
+
+                            });
+
+                            $scope.labels.push(key);
+                            $scope.data.push(temp);
+                            bool = false;
+                            
+                        }
+
+                        if (key == 'university_book ') {
+                            bool = false;
+                            $scope.labels.push(key);
+                            value = value / 6;
+                            $scope.data.push(value);
+                        }
+
+
+                        if (key == 'university_stationary') {
+                            bool = false;
+                            $scope.labels.push(key);
+                            value = value / 6;
+                            $scope.data.push(value);
+                        }
+
+                        if (key == 'university_period') {
+                            bool = false;
+                        }
+
+                        if (key == 'university_duration') {
+                            bool = false;
+                        }
+
+                        if (key == 'income_scholarship') {
+
+                            bool = false;                            
+                        }
+
+
+                        if (key == 'income_federal') {
+
+                            bool = false;
+                          
+                        }
+
+
+                        if (key == 'income_employment') {
+
+                            bool = false;    
+                          
+                        }
+
+                        if (key == 'income_employment_hours') {
+
+                            bool = false;                            
+                        }
+
+                        if (key == 'income_family_fund') {
+
+                            bool = false;
+                           
+                        }
+
+                        if (bool) {
+                            $scope.labels.push(key);
+                            $scope.data.push(value);
+                        }
+
+                    });
+            })
+        }
+    }]);
+
+    
+</script>

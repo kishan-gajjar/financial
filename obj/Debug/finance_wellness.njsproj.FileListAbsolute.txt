@@ -1,0 +1,2 @@
+C:\Users\KISHAN\Documents\Visual Studio 2017\Projects\finance_wellness\finance_wellness\obj\Debug\finance_wellness.njsprojResolveAssemblyReference.cache
+C:\Users\KISHAN\Documents\Visual Studio 2017\Projects\finance_wellness\finance_wellness\bin\Microsoft.NodejsTools.WebRole.dll

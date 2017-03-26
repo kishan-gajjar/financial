@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-web-app1",
+  "version": "0.0.0",
+  "description": "NodejsWebApp1",
+  "main": "server.js",
+  "author": {
+    "name": "KISHAN"
+  },
+  "dependencies": {
+    "angular-chart.js": "^1.1.1",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "knex": "^0.12.9",
+    "mysql": "^2.13.0",
+    "pg": "^6.1.5"
+  }
+}
